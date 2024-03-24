@@ -28,7 +28,7 @@ pip install -r requirements.txt
     - flask db init
     - flask run
 
-    * reference : (venv) myblog(.cmd)  
+    * reference : (venv) app(.cmd)  
                   (venv) flask db migrate  
                   (venv) flask db upgrade  
 
