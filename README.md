@@ -1,18 +1,19 @@
 "# Alpowered-app" 
 
 
-## this project is to make some translato app for g
+## goal
+- This project is to listen to what someone is saying and turn it into a different language voice.
 
 
-part1 : idea (together)
-IDEA about service ----decide which LLM we can use(HuggingFace)
-ex :  1. automatic speech recognition -> text -> translate 
-english text -> translate hindi -> textTovoice
-part2 :divide role
-sign in / sign out page  :  form ex) email, password   ___admin(Admin-id : 'admin@admin.com' Admin-pass: '111')   //Tushar
-admin /user landing page   // jack
-bonus) forget password feature  // jackson
-database organization : DB ERD, and DB table   //jackson
+- part1 : idea (together)
+  IDEA about service ----decide which LLM we can use(HuggingFace)
+  ex :  1. automatic speech recognition -> text -> translate 
+        2. english text -> translate hindi -> textTovoice
+- part2 :divide role
+  sign in / sign out page  :  form ex) email, password   ___admin(Admin-id : 'admin@admin.com' Admin-pass: '111')   //Tushar
+  admin /user landing page   // jack
+  bonus) forget password feature  // jackson
+  database organization : DB ERD, and DB table   //jackson
 
   front part : jack, tushar
   back end part : dongil
