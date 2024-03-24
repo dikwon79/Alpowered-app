@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}My Blog - 로그인{% endblock %}
+{% block title %}My App - login{% endblock %}
 
 {% block page_content %}
 <div class="container my-3">
     <div class="page-header">
-        <h5>로그인</h5>
+        <h5>login</h5>
     </div>
     <div class="col-md-4">
         {% include "_errors.html" %}
@@ -32,7 +32,7 @@
 
         </form>
         <p>
-            <a href="{{ url_for('auth.signup') }}">회원가입</a>
+            <a href="{{ url_for('auth.signup') }}">memebership</a>
         </p>
     </div>
 </div>
