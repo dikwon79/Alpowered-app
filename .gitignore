@@ -1,3 +1,10 @@
 migrations/
 __pycache__/
+<<<<<<< HEAD
 .pyc
+=======
+
+
+app.cmd
+pyvenv.cfg
+>>>>>>> 02943d9e9626a88b142b42d0a78d5463f6690906
