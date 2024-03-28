@@ -49,3 +49,7 @@ def logout():
     logout_user()
     flash('logoutted.')
     return redirect(url_for('main.index'))  
+
+@auth.route('/admin')
+def admin_dashboard():
+    return render_template('admin.html')
