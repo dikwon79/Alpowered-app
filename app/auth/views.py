@@ -38,7 +38,12 @@ def login():
             login_user(user, form.remember_me.data)
             next = request.args.get('next')
             if next is None or not next.startswith('/'):
-                next = url_for('main.index')
+                # check the mail address starting with admin
+                if user.email.startswith('admin'):
+                    # redirection to admin page
+                    return redirect(url_for('main.admin'))
+                else:
+                    next = url_for('main.index')  #user to main.index
             return redirect(next)
         flash('check your email or password.')   
     return render_template('auth/login.html', form=form)

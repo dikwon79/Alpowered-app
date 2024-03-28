@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class='container my-3'>
+    <!-- Admin-specific navigation could be included here if separate from the main navigation -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}
+    <!-- Admin Dashboard Main Content -->
+    <h2>Admin Dashboard</h2>
+    <section id="api-usage">
+        <h3>API Consumption Overview</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>API Calls Made</th>
+                    <th>Limit Reached</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Data Row -->
+                <tr>
+                    <td>john@john.com</td>
+                    <td>18</td>
+                    <td>No</td>
+                </tr>
+                <!-- Dynamically generate rows here -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="user-management">
+        <h3>Manage Users</h3>
+        <form action="/admin/adduser" method="POST">
+            <div class="form-group">
+                <label for="email">User Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add User</button>
+        </form>
+    </section>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    // Additional JavaScript for admin dashboard functionalities
+</script>
+{% endblock %}
