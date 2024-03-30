@@ -10,6 +10,9 @@ class Config:
     MYAPP_POSTS_PER_PAGE = 10
     MYAPP_COMMENTS_PER_PAGE = 10
     MYAPP_FOLLOWERS_PER_PAGE = 20
+    SESSION_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_HTTPONLY = True
+
 
     @staticmethod
     def init_app(app):
