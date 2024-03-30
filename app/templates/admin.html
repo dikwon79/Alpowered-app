@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_styles.css') }}">
+{% endblock %}
+
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block content %}
-<div class='container my-3'>
+<div cclass='container my-3 admin-dashboard'>
     <!-- Admin-specific navigation could be included here if separate from the main navigation -->
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
