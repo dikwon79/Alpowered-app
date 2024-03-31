@@ -1,0 +1,136 @@
+/* Basic reset remains global as it's foundational and shouldn't interfere */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-dashboard {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2e8f0; /* Admin-specific background */
+    color: #1a202c; /* Admin-specific text color */
+    line-height: 1.6;
+}
+
+.admin-dashboard .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.admin-dashboard .my-3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.admin-dashboard {
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard .alert {
+    padding: 20px;
+    background-color: #bee3f8;
+    color: #2a4365;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.admin-dashboard .alert .close {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin-dashboard h2, 
+.admin-dashboard h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.admin-dashboard .table-container {
+    overflow-x: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.admin-dashboard .table {
+    max-width: 80%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.admin-dashboard .table th, 
+.admin-dashboard .table td {
+    border: 1px solid #a0aec0;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.925rem;
+}
+
+.admin-dashboard .table th {
+    background-color: #48bb78; /* Light green for a fresh look */
+    color: #f7fafc; /* White text for contrast */
+    font-weight: bold;
+}
+
+.admin-dashboard .table tbody tr:nth-of-type(odd) {
+    background-color: #f7fafc; /* Striped effect for rows */
+}
+
+.admin-dashboard .table tbody tr:hover {
+    background-color: #e2e8f0; /* Hover effect for table rows */
+}
+
+.admin-dashboard .form-group {
+    margin-bottom: 0.5rem;
+}
+
+.admin-dashboard .form-group label {
+    margin-bottom: 0.25rem;
+}
+
+.admin-dashboard .form-group input[type="email"],
+.admin-dashboard .form-group input[type="password"] {
+    border-radius: 15px;
+   
+}
+
+.admin-dashboard #user-management {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.admin-dashboard .btn, 
+.admin-dashboard .btn-primary {
+    background-color: #68d391; /* Light green background */
+    color: #ffffff; /* White text */
+    border: 1px solid #48bb78; /* Border to match */
+    transition: background-color .3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+.admin-dashboard .btn:hover, 
+.admin-dashboard .btn-primary:hover {
+    background-color: #356a43; /* Darker green on hover for contrast */
+    color: #ffffff; /* Ensure text remains white for readability */
+}
+
+.admin-dashboard .btn:focus, 
+.admin-dashboard .btn-primary:focus, 
+.admin-dashboard .btn:active, 
+.admin-dashboard .btn-primary:active {
+    box-shadow: 0 0 0 2px rgba(72, 187, 120, 0.5); /* Focus/active state */
+}
