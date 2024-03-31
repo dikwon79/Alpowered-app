@@ -1,4 +1,3 @@
-/* Basic reset remains global as it's foundational and shouldn't interfere */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +6,8 @@
 
 .admin-dashboard {
     font-family: 'Arial', sans-serif;
-    background-color: #e2e8f0; /* Admin-specific background */
-    color: #1a202c; /* Admin-specific text color */
+    background-color: #e2e8f0;
+    color: #1a202c;
     line-height: 1.6;
 }
 
@@ -76,17 +75,17 @@
 }
 
 .admin-dashboard .table th {
-    background-color: #48bb78; /* Light green for a fresh look */
-    color: #f7fafc; /* White text for contrast */
+    background-color: #48bb78;
+    color: #f7fafc;
     font-weight: bold;
 }
 
 .admin-dashboard .table tbody tr:nth-of-type(odd) {
-    background-color: #f7fafc; /* Striped effect for rows */
+    background-color: #f7fafc;
 }
 
 .admin-dashboard .table tbody tr:hover {
-    background-color: #e2e8f0; /* Hover effect for table rows */
+    background-color: #e2e8f0;
 }
 
 .admin-dashboard .form-group {
@@ -100,7 +99,6 @@
 .admin-dashboard .form-group input[type="email"],
 .admin-dashboard .form-group input[type="password"] {
     border-radius: 15px;
-   
 }
 
 .admin-dashboard #user-management {
@@ -111,9 +109,9 @@
 
 .admin-dashboard .btn, 
 .admin-dashboard .btn-primary {
-    background-color: #68d391; /* Light green background */
-    color: #ffffff; /* White text */
-    border: 1px solid #48bb78; /* Border to match */
+    background-color: #68d391; 
+    color: #ffffff; 
+    border: 1px solid #48bb78; 
     transition: background-color .3s ease-in-out;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: .375rem .75rem;
@@ -124,13 +122,13 @@
 
 .admin-dashboard .btn:hover, 
 .admin-dashboard .btn-primary:hover {
-    background-color: #356a43; /* Darker green on hover for contrast */
-    color: #ffffff; /* Ensure text remains white for readability */
+    background-color: #356a43; 
+    color: #ffffff; 
 }
 
 .admin-dashboard .btn:focus, 
 .admin-dashboard .btn-primary:focus, 
 .admin-dashboard .btn:active, 
 .admin-dashboard .btn-primary:active {
-    box-shadow: 0 0 0 2px rgba(72, 187, 120, 0.5); /* Focus/active state */
+    box-shadow: 0 0 0 2px rgba(72, 187, 120, 0.5); 
 }
