@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}   
+    
+
+    {% block page_content %}
+        <!-- First Container -->
+        
+        <div class="container-fluid bg-2 text-center">
+            {% if total_api_logs > 20 %}
+            <div class="alert alert-warning" role="alert">
+                Warning: api call exceeds 20 characters.
+            </div>
+            {% endif %}
+            <h3 class="margin"> Now {{ current_user.username }}'s current API call count : {{ total_api_logs }} </h3>
+        </div>
+       
+        <div class="container-fluid bg-1 text-center">
+            <h3 class="greet">Welcome to AI service</h3>
+            <img src="/static/images/aiwoman.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+            <h3>I'm an Ai robot</h3>
+        </div>
+        
+        
+        
+    
+    {% endblock %}
+</div>
+{% endblock %}

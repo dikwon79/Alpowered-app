@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, session, g
+from flask import render_template, flash, redirect, url_for, session
 from flask_login import login_user, logout_user, login_required, current_user
 from flask.globals import request
 from .. import db
@@ -31,6 +31,13 @@ def signup():
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    
+    if current_user.is_authenticated:
+        if current_user.username == 'admin':
+            return redirect(url_for('main.admin'))
+        else:
+            return redirect(url_for('main.index'))
+    
     form = LoginForm() 
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data.lower()).first()
@@ -52,5 +59,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('logoutted.')
+    flash('logout completed.')
     return redirect(url_for('main.index'))  

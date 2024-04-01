@@ -46,3 +46,9 @@ pip install -r requirements.txt
 
 ### requirements.txt 
     pip freeze > requirements.txt
+
+
+### deploymenet - digitalocean
+make gunicorn_config.py
+
+gunicorn --worker-tmp-dir /dev/shm myapp:app

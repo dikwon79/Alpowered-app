@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}">
+   
+    <!-- 각 html 페이지 타이틀  -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body id="page-top">
+    <!-- 부트스트랩 내비게이션 포함 -->
+   
+    {% block page_content %}
+  
+    {% endblock %}    
+
+    <!--moment 사용 설정-->
+    {% block script %}
+        {{ moment.include_moment() }}
+        {{ moment.locale('ko') }}
+    {% endblock %}
+</body>
+</html>

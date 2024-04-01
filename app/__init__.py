@@ -6,6 +6,7 @@ from flask_moment import Moment
 from flask_login import LoginManager
 from config import config
 
+
 naming_convention = {
     "ix": 'ix_%(column_0_label)s',
     "uq": "uq_%(table_name)s_%(column_0_name)s",
@@ -22,7 +23,6 @@ login_manager.login_view = 'auth.login'
 
 def create_app(config_name):  
     app = Flask(__name__)  
-
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
