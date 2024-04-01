@@ -5,6 +5,8 @@ from sqlalchemy import MetaData
 from flask_moment import Moment
 from flask_login import LoginManager
 from config import config
+from flask_mail import Mail, Message
+
 
 
 naming_convention = {
@@ -17,6 +19,7 @@ naming_convention = {
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate()
 moment = Moment()
+mail = Mail()
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -25,7 +28,7 @@ def create_app(config_name):
     app = Flask(__name__)  
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
-
+    
     db.init_app(app)
     if app.config['SQLALCHEMY_DATABASE_URI'].startswith("sqlite"):
         migrate.init_app(app, db, render_as_batch=True)
@@ -34,7 +37,10 @@ def create_app(config_name):
 
     moment.init_app(app)
     login_manager.init_app(app)
-
+    
+    mail.init_app(app)
+    
+ 
     from app.auth import auth as auth_bp
     app.register_blueprint(auth_bp)
 

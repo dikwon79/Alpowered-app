@@ -24,6 +24,8 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
     
+    def set_password(self, new_password):
+        self.password = new_password
     
 
     def create_admin_user():
@@ -39,7 +41,7 @@ class User(UserMixin, db.Model):
             # 데이터베이스에 추가
             db.session.add(admin)
             db.session.commit()
-
+    
 
 class APILog(db.Model):
     __tablename__ = 'api_logs'

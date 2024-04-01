@@ -10,6 +10,12 @@ class Config:
     MYAPP_POSTS_PER_PAGE = 10
     MYAPP_COMMENTS_PER_PAGE = 10
     MYAPP_FOLLOWERS_PER_PAGE = 20
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 465
+    MAIL_USERNAME = 'dikwon79@gmail.com'
+    MAIL_PASSWORD = 'slfb botv ksyz rltc'
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
 
     @staticmethod
     def init_app(app):
