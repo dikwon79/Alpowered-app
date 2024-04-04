@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Admin Dashboard{% endblock %}
+{% block title %}Main{% endblock %}
 
 {% block content %}   
     
@@ -21,6 +21,14 @@
             <h3 class="greet">Welcome to AI service</h3>
             <img src="/static/images/aiwoman.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
             <h3>I'm an Ai robot</h3>
+        </div>
+
+        <div class="container-fluid bg-1 text-center">
+            <button id="startButton">recording</button>
+            <button id="stopButton" disabled>STOP</button>
+        </div>
+        <div class="container-fluid bg-1 text-center">
+            <audio id="audio" controls></audio>
         </div>
         
         
