@@ -35,11 +35,11 @@ function uploadBlob(blob) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                console.log("파일 업로드 완료");
+                console.log("success to send the audio files");
                 console.log(xhr.responseText);
             } else {
-                console.error("파일 업로드 실패:", xhr.status);
-                // 여기에 파일 업로드가 실패했을 때의 처리 코드를 추가할 수 있습니다.
+                console.error("fail to send the audio files:", xhr.status);
+                
             }
         }
     };
