@@ -36,7 +36,7 @@ function uploadBlob(blob) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 console.log("success to send the audio files");
-                console.log(xhr.responseText);
+                document.getElementById("textbox").value = xhr.responseText;
             } else {
                 console.error("fail to send the audio files:", xhr.status);
                 
