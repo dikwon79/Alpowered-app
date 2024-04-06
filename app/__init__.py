@@ -6,6 +6,7 @@ from flask_moment import Moment
 from flask_login import LoginManager
 from config import config
 from flask_mail import Mail, Message
+from flask_cors import CORS
 
 
 
@@ -26,6 +27,8 @@ login_manager.login_view = 'auth.login'
 
 def create_app(config_name):  
     app = Flask(__name__)  
+    
+    CORS(app)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     
