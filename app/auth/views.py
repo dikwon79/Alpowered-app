@@ -8,17 +8,17 @@ from ..models import User
 from sqlalchemy import exc
 from flask_mail import Message
 
-@auth.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-    response.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,OPTIONS'
-    return response
 
 
 @auth.route('/signup/', methods=['GET', 'POST'])
 def signup():
     data = request.get_json()
+     
+     # CORS 헤더 설정
+    response = jsonify()
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,OPTIONS'
 
     # JSON으로부터 필요한 데이터 추출
     email = data.get('email')
