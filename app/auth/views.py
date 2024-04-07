@@ -7,6 +7,10 @@ from .forms import SignupForm, LoginForm, Forgetpassword
 from ..models import User
 from sqlalchemy import exc
 from flask_mail import Message
+from flask_cors import CORS
+
+
+CORS(auth)
 
 @auth.route('/signup/', methods=['GET', 'POST'])
 def signup():
