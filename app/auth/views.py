@@ -8,6 +8,13 @@ from ..models import User
 from sqlalchemy import exc
 from flask_mail import Message
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,OPTIONS'
+    return response
+
 
 @auth.route('/signup/', methods=['GET', 'POST'])
 def signup():
