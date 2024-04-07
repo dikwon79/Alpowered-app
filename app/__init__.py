@@ -28,7 +28,6 @@ login_manager.login_view = 'auth.login'
 def create_app(config_name):  
     app = Flask(__name__)  
     
-    CORS(app)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     
@@ -46,8 +45,9 @@ def create_app(config_name):
  
     from app.auth import auth as auth_bp
     app.register_blueprint(auth_bp)
-
+    
     from app.main import main as main_bp
     app.register_blueprint(main_bp)
-
+    
+    CORS(app)
     return app

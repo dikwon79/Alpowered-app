@@ -6,10 +6,7 @@ from ..models import APILog,User
 from sqlalchemy.sql import func
 from flask import request
 from collections import defaultdict
-from flask_cors import CORS
 
-
-CORS(main)
 
 @main.route('/')
 def index():
