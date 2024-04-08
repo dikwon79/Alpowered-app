@@ -12,39 +12,26 @@ from flask_mail import Message
 
 @auth.route('/signup/', methods=['GET', 'POST'])
 def signup():
-    data = request.get_json()
-     
-     # CORS 헤더 설정
-    response = jsonify()
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-    response.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,OPTIONS'
-
-    # JSON으로부터 필요한 데이터 추출
-    email = data.get('email')
-    username = data.get('username')
-    password = data.get('password')
-    password2 = data.get('password2')
-
-    # 유효성 검사 등 필요한 로직 수행
-    if not email or not username or not password or not password2:
-        return jsonify({'error': 'All fields are required'}), 400
-
-    if password != password2:
-        return jsonify({'error': 'Passwords do not match'}), 400
-
-    # 새로운 사용자 생성
-    new_user = User(email=email, username=username, password=password)
-
-    try:
-        # 데이터베이스에 사용자 추가
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({'message': 'User created successfully'}), 201
-    except Exception as e:
-        # 데이터베이스 오류 발생 시
-        db.session.rollback()
-        return jsonify({'error': 'Failed to create user'}), 500
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if not user:
+            user = User(email=form.email.data,
+                username=form.username.data,
+                role = 1,
+                password=form.password.data)
+                
+            try:    
+                db.session.add(user)
+                db.session.commit()
+                flash('you have got member. please login.')                
+                return redirect(url_for('main.index'))
+            except exc.IntegrityError:
+                db.session.rollback()
+                flash('already used mail.')
+        else:
+            flash('already enrolled.')        
+    return render_template('auth/signup.html', form=form)
 
 @auth.route('/forgetpassword/', methods=['GET', 'POST'])
 def forgetpassword():

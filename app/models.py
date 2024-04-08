@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
+    role = db.Column(db.String(1))
     password_hash = db.Column(db.String(512))
     
 
@@ -37,7 +38,7 @@ class User(UserMixin, db.Model):
             # 관리자 사용자 생성
             admin = User(email='admin@admin.com', username='admin')
             admin.password = '111'  # 비밀번호 설정
-
+            admin.role = '0' #if role is 0 ->
             # 데이터베이스에 추가
             db.session.add(admin)
             db.session.commit()

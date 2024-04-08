@@ -37,6 +37,21 @@ function uploadBlob(blob) {
             if (xhr.status === 200) {
                 console.log("success to send the audio files");
                 document.getElementById("textbox").value = xhr.responseText;
+                 // Send a POST request to the "count" route
+                const countXhr = new XMLHttpRequest();
+                countXhr.open("POST", "/count", true); // Assuming "count" is the route on your server
+                countXhr.setRequestHeader("Content-Type", "application/json");
+                countXhr.onreadystatechange = function() {
+                    if (countXhr.readyState === XMLHttpRequest.DONE) {
+                        if (countXhr.status === 200) {
+                            console.log("Successfully sent count data");
+                        } else {
+                            console.error("Failed to send count data:", countXhr.status);
+                        }
+                    }
+                };
+              
+
             } else {
                 console.error("fail to send the audio files:", xhr.status);
                 

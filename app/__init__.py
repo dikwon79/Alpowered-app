@@ -18,6 +18,8 @@ naming_convention = {
     "pk": "pk_%(table_name)s"
 }
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
+
+
 migrate = Migrate()
 moment = Moment()
 mail = Mail()

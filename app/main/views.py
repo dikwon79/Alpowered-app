@@ -27,11 +27,9 @@ def admin():
     else:
         return render_template('404.html')
 
-@main.after_request
+@main.route('/count',  methods=['POST'])
 def record_api_consumption(response):
-   
     if current_user.is_authenticated:
-        # 사용자가 로그인한 경우에만 API 소비를 카운트
         api_log = APILog(user_id=current_user.id, endpoint=request.endpoint, method=request.method, timestamp=func.now())
         db.session.add(api_log)
         db.session.commit()

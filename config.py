@@ -20,19 +20,20 @@ class Config:
     @staticmethod
     def init_app(app):
         pass
-
+    
+    
 class DevelopmentConfig(Config):
     DEBUG = True
     # MySQL을 사용하려면 'mysql+pymysql'을 사용합니다.
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://doadmin:AVNS_gJeBLp6MVV_PyMx3baQ@db-mysql-nyc3-61584-do-user-15802968-0.c.db.ondigitalocean.com:25060/comp4537'
-
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://dongil:AVNS_yWTxLGovb-KZxZOYHf5@db-mysql-nyc3-87675-do-user-16279834-0.c.db.ondigitalocean.com:25060/dbcomp4537'
+                                    
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://doadmin:AVNS_gJeBLp6MVV_PyMx3baQ@db-mysql-nyc3-61584-do-user-15802968-0.c.db.ondigitalocean.com:25060/comp4537'
-
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://dongil:AVNS_yWTxLGovb-KZxZOYHf5@db-mysql-nyc3-87675-do-user-16279834-0.c.db.ondigitalocean.com:25060/dbcomp4537'
+    
 class ProductionConfig(Config):
     # MySQL을 사용하려면 'mysql+pymysql'을 사용합니다.
-     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://doadmin:AVNS_gJeBLp6MVV_PyMx3baQ@db-mysql-nyc3-61584-do-user-15802968-0.c.db.ondigitalocean.com:25060/comp4537'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://dongil:AVNS_yWTxLGovb-KZxZOYHf5@db-mysql-nyc3-87675-do-user-16279834-0.c.db.ondigitalocean.com:25060/dbcomp4537'
 
 config = {
     'development': DevelopmentConfig,
