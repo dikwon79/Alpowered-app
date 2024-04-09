@@ -108,3 +108,8 @@ def logout():
     logout_user()
     flash('logout completed.')
     return redirect(url_for('main.index'))  
+
+@auth.route('/docs', methods=['GET', 'POST'])
+def docs():
+    # Your code to render a template or return a response
+    return render_template('docs.html')
