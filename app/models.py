@@ -44,9 +44,11 @@ class User(UserMixin, db.Model):
             db.session.commit()
     
 
+
 class APILog(db.Model):
     __tablename__ = 'api_logs'
     id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(10))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     endpoint = db.Column(db.String(128))
     method = db.Column(db.String(10))

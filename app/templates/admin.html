@@ -102,7 +102,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 GET requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['get'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ query_total['GET'] }}</div>
                                         </div>                 
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -120,7 +120,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 POST requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['post'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ query_total['POST'] }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -141,7 +141,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ total_statistics['head'] }}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ query_total['DELETE'] }}</div>
                                                 </div>
                                                
                                             </div>
@@ -162,7 +162,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 PUT requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_statistics['put'] }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ query_total['PATCH'] }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -188,24 +188,39 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>GET</th>
-                                            <th>POST</th>
-                                            <th>HEAD</th>
-                                            <th>PUT</th>
+                                            
                                             <th>TOTAL</th>
+                                            <th>ROLE</th>
+                                            <th>DELETE</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for user_id, stats in user_statistics.items() %}
-                                        <tr>
+                                        <tr id="user_row_{{ stats.id }}">
                                             <td>{{ stats.username }}</td>
                                             <td>{{ stats.email }}</td>
-                                            <td>{{ stats.total_get_requests }}</td>
-                                            <td>{{ stats.total_post_requests }}</td>
-                                            <td>{{ stats.total_head_requests }}</td>
-                                            <td>{{ stats.total_put_requests }}</td>
+                                           
                                             <td>{{ stats.total_all_requests }}</td>
+                                            <td>
+                                                <select name="role" onchange="updateRole(this.value, '{{ stats.id }}')">
+                                                    {% if stats.role == '0' %}
+                                                        <option value="0" selected>admin</option>
+                                                        <option value="1">user</option>
+                                                    {% elif stats.role == '1' %}
+                                                        <option value="0">admin</option>
+                                                        <option value="1" selected>user</option>
+                                                    {% else %}
+                                                        <option value="0">admin</option>
+                                                        <option value="1">user</option>
+                                                    {% endif %}
+                                                </select>
+                                            </td>
+                                            <td id="role_column_{{ stats.id }}">
+                                                {% if stats.role == '1' %}
+                                                    <button onclick="deleteUser('{{ stats.id }}')">DELETE</button>
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                         <!-- 다른 사용자 데이터 추가 -->
@@ -217,43 +232,30 @@
                         <!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Something to do</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">1</a>
-                                            <a class="dropdown-item" href="#">2</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">3</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 1
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 2
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 3
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                                <!-- 테이블 추가 -->
+                                <table class="table">
+                                   <thead>
+                                       <tr>
+                                           <th>ENDPOINT</th>
+                                           <th>METHOD</th>
+                                           <th>REQUESTS</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                    {% for endpoint, methods in query_statistics.items() %}
+                                        {% for method, total_requests in methods.items() %}
+                                            {% if total_requests != 0 %}
+                                            <tr>
+                                            <td>{{ endpoint }}</td>
+                                            <td>{{ method }}</td>
+                                            <td>{{ total_requests }}</td>
+                                            </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                   </tbody>
+                               </table>
+                           </div> 
                         </div>
                     </div>                
                 </div>
@@ -277,5 +279,5 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
+    <script src="{{ url_for('static', filename='/js/admin.js') }}"></script>
 {% endblock %}
