@@ -31,7 +31,7 @@ function uploadBlob(blob) {
     formData.append("audio", blob, "recording.wav");
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://hammerhead-app-6i4de.ondigitalocean.app/upload", true);
+    xhr.open("POST", "http://127.0.0.1:5000/upload", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
